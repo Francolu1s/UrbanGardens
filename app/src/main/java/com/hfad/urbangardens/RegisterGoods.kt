@@ -9,7 +9,8 @@ import android.text.TextWatcher
 import android.widget.*
 import java.text.DecimalFormat
 
-class RegisterGoods : AppCompatActivity() {
+class
+RegisterGoods : AppCompatActivity() {
     lateinit var nameView: TextView
     lateinit var imageView: ImageView
     lateinit var buttonAdd: Button
