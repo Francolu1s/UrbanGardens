@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/background_gradient">
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="80sp"
+        android:text="Urban Gardens"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:fontFamily="@font/davinci_forward"/>
+    <ImageView
+        android:layout_marginTop="24dp"
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_pic"
+        android:layout_below="@+id/title_text"
+        android:layout_marginBottom="24dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_below="@id/image"
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lovely"
+        android:hint="Enter your name"
+        android:layout_marginBottom="16dp"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextName"
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+        android:fontFamily="@font/lovely"
+        android:layout_marginBottom="24dp"
+        android:textSize="24sp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_below="@id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:fontFamily="@font/lovely"
+        android:background="@drawable/button_shape"
+        android:padding="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonLogin"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_shape"
+        android:fontFamily="@font/lovely"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Register"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonRegister"
+        android:layout_centerHorizontal="true"
+        android:textSize="32sp"
+        android:fontFamily="@font/lovely"
+        android:layout_marginTop="16dp"/>
+</RelativeLayout>

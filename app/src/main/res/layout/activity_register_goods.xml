@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/background_gradient">
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="80sp"
+        android:text="Urban Gardens"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:fontFamily="@font/davinci_forward"/>
+    <ImageView
+        android:layout_marginTop="24dp"
+        android:id="@+id/resourceImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_pic"
+        android:layout_below="@+id/name_text"
+        android:layout_marginBottom="24dp"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/editVolume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter the volume"
+        android:layout_below="@id/resourceImage"
+        android:layout_marginBottom="16dp"
+        android:inputType="numberDecimal"/>
+    <TextView
+        android:id="@+id/textViewDollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:gravity="bottom"
+        android:textSize="20sp"
+        android:layout_below="@id/editVolume"
+        android:layout_marginHorizontal="8dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/editUnitPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editVolume"
+        android:layout_toRightOf="@id/textViewDollarSign"
+        android:hint="Enter the Unit Price"
+        android:inputType="numberDecimal"
+
+        android:layout_marginBottom="16dp"
+        />
+
+    <EditText
+        android:id="@+id/editTotalUnits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editUnitPrice"
+        android:hint="Enter the Total Units to add"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTotalUnits"
+        android:hint="Enter the Month of the Purchase"
+        android:inputType="number"
+        android:layout_marginBottom="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAddPurchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_below="@id/editMonth"
+        android:background="@drawable/button_shape"
+        android:fontFamily="@font/lovely"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
