@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -33,6 +34,22 @@ android {
 }
 
 dependencies {
+    //Room Dependencies
+
+// ROOM IMPLEMENTATION
+    def room_version = "2.5.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
+    // Add the room-ktx dependency
+    implementation "androidx.room:room-ktx:2.4.0"
+
+    //for localDate
+
+    implementation "com.jakewharton.threetenabp:threetenabp:1.3.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

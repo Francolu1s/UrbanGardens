@@ -28,16 +28,8 @@ class CategoriesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         //1. Data
-        val categoriesList = listOf(
-            CardViewModelClass("Add Water", R.drawable.water),
-            CardViewModelClass("Add Soil", R.drawable.soil),
-            CardViewModelClass("Add Seeds", R.drawable.seeds),
-            CardViewModelClass("Add Compost", R.drawable.compost),
-            CardViewModelClass("Add Tools", R.drawable.tools),
-            CardViewModelClass("Add Boundaries", R.drawable.boundary),
-        )
         //3. Adapter
-        adapter = CardViewAdapter(rootView.context, categoriesList) { item ->
+        adapter = CardViewAdapter(rootView.context, MyApplication.categoriesList) { item ->
             // Handle the click event for the item
             // You can access the properties of the clicked item, such as item.title, item.imageResId, etc.
             // Perform any actions you want when an item is clicked
@@ -45,6 +37,7 @@ class CategoriesFragment : Fragment() {
             val intent = Intent(rootView.context, RegisterGoods::class.java)
             intent.putExtra("position", item.cardViewText)
             intent.putExtra("image", item.cardViewImage)
+            intent.putExtra("units",item.cardViewUnits)
             startActivity(intent)
         }
 

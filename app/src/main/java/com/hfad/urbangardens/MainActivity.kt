@@ -1,55 +1,63 @@
 package com.hfad.urbangardens
 
-import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var editTextName: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var buttonLogin: Button
     private lateinit var buttonRegister: Button
     private lateinit var textViewResult: TextView
-    var users = mutableListOf(UserRegistration("u",
-        "user@gmail.com",
-        "user",
-        "g"))
+    private lateinit var viewModel: UserViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
+        //Careful with the main thread queries
+        MyApplication.userDatabase = Room.databaseBuilder(
+            applicationContext,
+            UserDatabase::class.java,
+            "user_database"
+        ).allowMainThreadQueries().build()
         val intent = intent
-        users.add(
-            UserRegistration(
-                intent.getStringExtra("name").toString(),
-                intent.getStringExtra("email").toString(),
-                intent.getStringExtra("nickname").toString(),
-                intent.getStringExtra("password").toString()
-))
+        val userDao = MyApplication.userDatabase.userDao()
         editTextName = findViewById(R.id.editTextName)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
         buttonRegister = findViewById(R.id.buttonRegister)
         textViewResult = findViewById(R.id.textViewResult)
-
         buttonLogin.setOnClickListener {
-            val name = editTextName.text.toString()
-            val password = editTextPassword.text.toString()
+            val nickname = editTextName.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
             var valid = false
-            for(element in users) {
-                if(name == element.name) {
-                    if(password == element.password) {
-                        valid = true
-                        break
-                    }
+            /*        GlobalScope.launch(Dispatchers.IO) {
+            val user = userDao.getUserByCredentials(nickname, password)
+
+            runOnUiThread {
+                if (user != null) {
                 }
             }
+        }*/ val user = userDao.getUserByCredentials(nickname, password)
+                    if (user != null) {
+                        valid = true
+                        MyApplication.userViewModel.loggedInUserId = user.id
+                    }
             if (valid) {
                 textViewResult.text = "Login successful!"
                 val intent = Intent(this, MainScreen::class.java)
@@ -62,8 +70,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
-    }
-    fun addUser(user: UserRegistration) {
-        users.add(user)
     }
 }

@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:gravity="center"
+    android:layout_gravity="center"
     android:background="@drawable/background_gradient">
     <TextView
         android:id="@+id/name_text"
@@ -25,18 +27,32 @@
         android:layout_centerHorizontal="true"/>
     <EditText
         android:id="@+id/editVolume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:hint="Enter the volume"
         android:layout_below="@id/resourceImage"
         android:layout_marginBottom="16dp"
-        android:inputType="numberDecimal"/>
+        android:textAlignment="center"
+        android:inputType="numberDecimal" />
+    <TextView
+        android:id="@+id/textUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Volume"
+        android:textSize="20sp"
+        android:layout_toEndOf="@id/editVolume"
+        android:layout_below="@id/resourceImage"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="16dp"
+        android:textStyle="bold"/>
     <TextView
         android:id="@+id/textViewDollarSign"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="$"
-        android:gravity="bottom"
+        android:gravity="center"
+        android:foregroundGravity="bottom"
         android:textSize="20sp"
         android:layout_below="@id/editVolume"
         android:layout_marginHorizontal="8dp"
@@ -45,39 +61,20 @@
     <EditText
         android:id="@+id/editUnitPrice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_below="@id/editVolume"
         android:layout_toRightOf="@id/textViewDollarSign"
-        android:hint="Enter the Unit Price"
+        android:hint="Enter the Price per Unit"
         android:inputType="numberDecimal"
-
         android:layout_marginBottom="16dp"
         />
-
-    <EditText
-        android:id="@+id/editTotalUnits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editUnitPrice"
-        android:hint="Enter the Total Units to add"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp"/>
-
-    <EditText
-        android:id="@+id/editMonth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTotalUnits"
-        android:hint="Enter the Month of the Purchase"
-        android:inputType="number"
-        android:layout_marginBottom="16dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddPurchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:layout_below="@id/editMonth"
+        android:layout_below="@id/editUnitPrice"
         android:background="@drawable/button_shape"
         android:fontFamily="@font/lovely"
         android:layout_centerHorizontal="true"/>

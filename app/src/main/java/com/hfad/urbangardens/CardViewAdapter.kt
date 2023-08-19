@@ -48,7 +48,7 @@ class CardViewAdapter(
         }
 
         fun bind(item: CardViewModelClass) {
-            titleTextView.text = item.cardViewText
+            titleTextView.text = "Add ${item.cardViewText}"
             imageView.setImageResource(item.cardViewImage)
         }
     }
